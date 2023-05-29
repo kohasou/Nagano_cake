@@ -4,7 +4,7 @@
       <p class="h3">
         <strong>登録情報</strong>
       </p>
-      <p><%= link_to '編集する', edit_customer_registration_path, class:"btn btn-success" %></p>
+      <p><%= link_to '編集する', edit_customer_path, class:"btn btn-success" %></p>
     </div>
   </div>
   <table class="table table-bordered col-5">
@@ -35,4 +35,12 @@
       </tr>
     </tbody>
   </table>
+  <div class="row">
+    <div class="col">
+      <p class="h3">
+        <strong>注文履歴</strong>
+      </p>
+      <p><%= link_to '一覧を見る', orders_path, class:"btn btn-primary" %></p>
+    </div>
+  </div>
 </div>

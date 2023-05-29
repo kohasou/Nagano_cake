@@ -9,11 +9,13 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
 }
 
   scope module: :public do
-    
     root to: "homes#top"
     get '/about' => 'homes#about', as: 'about'
     get 'customers/my_page' => 'customers#show', as: 'my_page'
+    get '/customers/information/edit' => 'customers#edit', as: 'edit_customer'
+    patch '/customers/information' => 'customers#update', as: 'customer'
     resources :customers
+    resources :orders
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
