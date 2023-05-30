@@ -13,9 +13,18 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
     get '/about' => 'homes#about', as: 'about'
     get 'customers/my_page' => 'customers#show', as: 'my_page'
     get '/customers/information/edit' => 'customers#edit', as: 'edit_customer'
+    get '/customers/withdrawal' => 'customers#withdrawal', as: 'withdrawal'
     patch '/customers/information' => 'customers#update', as: 'customer'
     resources :customers
     resources :orders
+
+    def after_sign_in_path_for(resource)
+      root_path
+    end
+
+    def after_sign_out_path_for(resource)
+      root_path
+    end
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

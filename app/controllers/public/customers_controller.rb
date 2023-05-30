@@ -7,11 +7,21 @@ class Public::CustomersController < ApplicationController
     @customer = current_customer
   end
 
+  def withdrawal
+  end
+
   def update
-    if @customer.update
-      redirect_to :show
+    if current_customer.update(customer_params)
+      redirect_to my_page_path
     else
       render :edit
     end
+  end
+
+  private
+
+  def customer_params
+    params.require(:customer).permit(:last_name, :first_name, :last_name_kana, :first_name_kana,
+    :postal_code, :address, :telephone_number, :email)
   end
 end
