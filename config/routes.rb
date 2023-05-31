@@ -14,8 +14,8 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
     get 'customers/my_page' => 'customers#show', as: 'my_page'
     get '/customers/information/edit' => 'customers#edit', as: 'edit_customer'
     get '/customers/withdrawal' => 'customers#withdrawal', as: 'withdrawal'
+    patch '/customers/deleteprocess' => 'customers#deleteprocess', as: 'deleteprocess'
     patch '/customers/information' => 'customers#update', as: 'customer'
-    resources :customers
     resources :orders
 
     def after_sign_in_path_for(resource)

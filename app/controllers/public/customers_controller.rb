@@ -10,6 +10,12 @@ class Public::CustomersController < ApplicationController
   def withdrawal
   end
 
+  def deleteprocess
+    current_customer.update(is_active: false)
+    reset_session
+    redirect_to root_path
+  end
+
   def update
     if current_customer.update(customer_params)
       redirect_to my_page_path
