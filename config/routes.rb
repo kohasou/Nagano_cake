@@ -7,11 +7,15 @@ devise_for :customers,skip: [:passwords], controllers: {
 devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
   sessions: "admin/sessions"
 }
+  namespace :admin do
+    get '/' => 'homes#top', as: 'top'
+    get '/customers' => 'customers#index', as: 'customers'
+  end
 
   scope module: :public do
     root to: "homes#top"
     get '/about' => 'homes#about', as: 'about'
-    get 'customers/my_page' => 'customers#show', as: 'my_page'
+    get '/customers/my_page' => 'customers#show', as: 'my_page'
     get '/customers/information/edit' => 'customers#edit', as: 'edit_customer'
     get '/customers/withdrawal' => 'customers#withdrawal', as: 'withdrawal'
     patch '/customers/deleteprocess' => 'customers#deleteprocess', as: 'deleteprocess'
