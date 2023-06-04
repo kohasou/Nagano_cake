@@ -10,6 +10,8 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
   namespace :admin do
     get '/' => 'homes#top', as: 'top'
     get '/customers' => 'customers#index', as: 'customers'
+    get '/customers/:id' => 'customers#show', as: 'customers_show'
+    get '/customers/:id/edit' => 'customers#edit', as: 'customers_edit'
   end
 
   scope module: :public do
