@@ -12,6 +12,7 @@
         <th class="col-3">会員ID</th>
         <th class="col-3">氏名</th>
         <th class="col-3">メールアドレス</th>
+        <th class="col-3">ステータス</th>
       </tr>
     </thead>
     <tbody>
@@ -20,6 +21,13 @@
         <th class="row"><%= customer.id %></th>
         <td><%= link_to customer.last_name + customer.first_name, admin_customers_show_path(customer.id) %></td>
         <td><%= customer.email %></td>
+        <td>
+          <% if customer.is_active == true %>
+            <p class="text-success">有効</p>
+          <% else %>
+            <p class="text-muted">退会</p>
+          <% end %>
+        </td>
       </tr>
 <% end %>
     </tbody>

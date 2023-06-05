@@ -1,0 +1,19 @@
+<div class="container">
+  <div class="row">
+    <div class="col-3">
+      <h4>
+        <strong>商品新規登録</strong>
+      </h4>
+    </div>
+  <div>
+  <%= form_with model: @item do |f| %>
+
+  <div class="row">
+    <div class="col-3">
+      <p>商品画像<p>
+    </div>
+    <div class="col-3">
+      <%= f.file_field :image, accept: "image/*" %>
+    </div>
+  </div>
+  <% end %>

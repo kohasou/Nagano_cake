@@ -12,6 +12,8 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
     get '/customers' => 'customers#index', as: 'customers'
     get '/customers/:id' => 'customers#show', as: 'customers_show'
     get '/customers/:id/edit' => 'customers#edit', as: 'customers_edit'
+    patch '/customers/:id' => 'customers#update', as: 'update'
+    resources :items, only: [:index, :new, :create, :show, :edit, :update]
   end
 
   scope module: :public do
