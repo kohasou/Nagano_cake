@@ -25,6 +25,7 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
     patch '/customers/deleteprocess' => 'customers#deleteprocess', as: 'deleteprocess'
     patch '/customers/information' => 'customers#update', as: 'customer'
     resources :orders
+    resources :items
 
     def after_sign_in_path_for(resource)
       root_path

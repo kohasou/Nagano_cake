@@ -8,7 +8,7 @@
   </div>
   <div class="row">
     <div class="col-3">
-      <%= image_tag @item.get_image(200,200) %>
+      <%= image_tag @item.get_image(200, 200) %>
     </div>
   </div>
   <table class="col-5">
@@ -24,10 +24,6 @@
       <tr>
         <td class="col-3">税抜き価格</td>
         <td class="col-5"><%= @item.non_taxed_price %>円</td>
-      </tr>
-      <tr>
-        <td></td>
-        <td><%= link_to '編集する', edit_admin_item_path, class:"btn btn-success" %></td>
       </tr>
     </tbody>
   </table>
