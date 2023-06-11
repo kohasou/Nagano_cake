@@ -4,22 +4,15 @@
       <strong>商品一覧</strong>
     </h4>
   </div>
-  <table class="table">
-    <thead>
-      <tr>
-        <th class="col-1">商品ID</th>
-        <th class="col-3">商品名</th>
-        <th class="col-3">税抜き価格</th>
-      </tr>
-    </thead>
-    <tbody>
-    <% @items.each do |item| %>
-      <tr>
-        <th class="row"><%= item.id %></th>
-        <td><%= link_to item.item_name, item_path(item.id) %></td>
-        <td><%= item.non_taxed_price %></td>
-      </tr>
-    <% end %>
-    </tbody>
-  </table>
+  <div class="row">
+  <% @items.each do |item| %>
+    <div class="row">
+      <div class="col-5">
+        <%= image_tag item.get_image(150, 150) %>
+        <%= link_to item.item_name, item_path(item.id) %>
+        <%= item.non_taxed_price %>
+      </div>
+    </div>
+  <% end %>
+  </div>
 </div>
