@@ -8,7 +8,8 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
   sessions: "admin/sessions"
 }
   namespace :admin do
-    get '/' => 'homes#top', as: 'top'
+    root to: "homes#top"
+    #get '/' => 'homes#top', as: 'top'
     get '/customers' => 'customers#index', as: 'customers'
     get '/customers/:id' => 'customers#show', as: 'customers_show'
     get '/customers/:id/edit' => 'customers#edit', as: 'customers_edit'
@@ -26,14 +27,6 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
     patch '/customers/information' => 'customers#update', as: 'customer'
     resources :orders
     resources :items
-
-    def after_sign_in_path_for(resource)
-      root_path
-    end
-
-    def after_sign_out_path_for(resource)
-      root_path
-    end
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
