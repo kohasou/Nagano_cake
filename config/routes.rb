@@ -9,7 +9,6 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
 }
   namespace :admin do
     root to: "homes#top"
-    #get '/' => 'homes#top', as: 'top'
     get '/customers' => 'customers#index', as: 'customers'
     get '/customers/:id' => 'customers#show', as: 'customers_show'
     get '/customers/:id/edit' => 'customers#edit', as: 'customers_edit'
@@ -27,6 +26,7 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
     patch '/customers/information' => 'customers#update', as: 'customer'
     resources :orders
     resources :items
+    resources :cart_items
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
