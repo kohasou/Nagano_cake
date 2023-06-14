@@ -25,6 +25,13 @@
         <td class="col-3">税抜き価格</td>
         <td class="col-5"><%= @item.non_taxed_price %>円</td>
       </tr>
+    <%= form_with model: @cart_item , url: cart_items_path, method: :post do |f| %>
+      <%= f.hidden_field :item_id, :value => @item.id %>
+      <tr>
+        <td class="col-3"><%= f.select :quantity, [['1',1], ['2',2], ['3',3]] %></td>
+        <td class="col-5"><%= f.submit "カートに入れる", class:"btn btn-success" %></td>
+      </tr>
+    <% end %>
     </tbody>
   </table>
 </div>
