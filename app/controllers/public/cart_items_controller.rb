@@ -16,6 +16,15 @@ class Public::CartItemsController < ApplicationController
     redirect_to cart_items_path
   end
 
+  def update
+    @cart_item = CartItem.find(params[:id])
+    if @cart_item.update(cart_item_params)
+      redirect_to cart_items_path
+    else
+      render :index
+    end
+  end
+
   private
 
   def cart_item_params
