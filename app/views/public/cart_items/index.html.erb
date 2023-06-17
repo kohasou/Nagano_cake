@@ -5,18 +5,21 @@
         <strong>ショッピングカート</strong>
       </h4>
     </div>
+    <div class="col">
+      <%= link_to 'カートを空にする', destroy_all_path, method: :delete, class:"btn btn-danger" %>
+    </div>
   </div>
   <table class="table">
     <thead>
       <tr>
         <th class="col-1">商品名</th>
-        <th class="col-3">単価(税込)</th>
-        <th class="col-3">数量</th>
-        <th class="col-3">小計</th>
+        <th class="col-2">単価(税込)</th>
+        <th class="col-2">数量</th>
+        <th class="col-2">小計</th>
       </tr>
     </thead>
     <tbody>
-    <% @cart_item.each do |cart_item| %>
+    <% @cart_items.each do |cart_item| %>
       <tr>
         <td class="col-3"><%= image_tag cart_item.item.get_image(50, 50) %> <%= cart_item.item.item_name %></td>
         <td><%= cart_item.item.with_tax_price%></td>
@@ -24,6 +27,7 @@
         <td><%= f.select :quantity, [['1',1], ['2',2], ['3',3]] %> <%= f.submit "変更する", class:"btn btn-success" %></td>
       <% end %>
         <td><%= cart_item.subtotal%></td>
+        <td><%= link_to '削除する', cart_item_path(cart_item.id), method: :delete, class:"btn btn-danger" %></td>
       </tr>
     <% end %>
     </tbody>

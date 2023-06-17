@@ -22,6 +22,10 @@
         <td class="col-5"><%= @item.introduction %></td>
       </tr>
       <tr>
+        <td class="col-3">税込み価格</td>
+        <td class="col-5"><%= @item.with_tax_price%>円</td>
+      </tr>
+      <tr>
         <td class="col-3">税抜き価格</td>
         <td class="col-5"><%= @item.non_taxed_price %>円</td>
       </tr>

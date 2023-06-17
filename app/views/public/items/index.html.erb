@@ -10,7 +10,7 @@
       <div class="col-5">
         <%= image_tag item.get_image(150, 150) %>
         <%= link_to item.item_name, item_path(item.id) %>
-        <%= item.non_taxed_price %>
+        <%= item.with_tax_price%>
       </div>
     </div>
   <% end %>

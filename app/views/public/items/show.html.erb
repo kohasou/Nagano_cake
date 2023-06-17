@@ -16,20 +16,20 @@
     <table>
       <tbody>
         <tr>
-          <td class="col-3">商品名</td>
+          <td class="col-6">商品名</td>
           <td class="col-5"><%= @item.item_name %></td>
         </tr>
         <tr>
-          <td class="col-3">商品説明</td>
+          <td class="col-6">商品説明</td>
           <td class="col-5"><%= @item.introduction %></td>
         </tr>
         <tr>
-          <td class="col-3">税抜き価格</td>
-          <td class="col-5"><%= @item.non_taxed_price %>円</td>
+          <td class="col-6">税込み価格</td>
+          <td class="col-5"><%= @item.with_tax_price%>円</td>
         </tr>
         <tr>
-              <td><%= f.select :quantity, [['1',1], ['2',2], ['3',3]] %> <%= f.hidden_field :item_id, :value => @item.id %></td>
-              <td><%= f.submit "カートに入れる", class:"btn btn-success" %></td>
+          <td><%= f.select :quantity, [['1',1], ['2',2], ['3',3]] %> <%= f.hidden_field :item_id, :value => @item.id %></td>
+          <td><%= f.submit "カートに入れる", class:"btn btn-success" %></td>
         </tr>
       </tbody>
     </table>

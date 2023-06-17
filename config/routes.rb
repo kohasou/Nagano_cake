@@ -24,6 +24,7 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
     get '/customers/withdrawal' => 'customers#withdrawal', as: 'withdrawal'
     patch '/customers/deleteprocess' => 'customers#deleteprocess', as: 'deleteprocess'
     patch '/customers/information' => 'customers#update', as: 'customer'
+    delete '/cart_items/destroy_all' => 'cart_items#destroy_all', as: 'destroy_all'
     resources :orders
     resources :items
     resources :cart_items
