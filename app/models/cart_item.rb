@@ -2,9 +2,13 @@ class CartItem < ApplicationRecord
   belongs_to :item
   belongs_to :customer
 
-def subtotal
+  def subtotal
     item.with_tax_price * quantity
-end
+  end
+
+  def sum_of_price
+    item.with_tax_price * quantity
+  end
 
   def get_image(width, height)
     unless image.attached?

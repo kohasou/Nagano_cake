@@ -14,12 +14,23 @@
   </div>
   <div class="row">
     <div class="col-5">
-      <%= f.radio_button :payment_method, "credit_card" %> <%= f.label :payment_method_credit_card, "クレジットカード" %>
+      <%= f.radio_button :payment_method, Order.payment_methods.key(0) %> <%= f.label :payment_method_credit_card, Order.payment_methods_i18n[:credit_card] %>
     </div>
   </div>
   <div class="row">
     <div class="col-5">
-      <%= f.radio_button :payment_method, "bank" %> <%= f.label :payment_method_bank, "銀行振込" %>
+      <%= f.radio_button :payment_method, Order.payment_methods.key(1) %> <%= f.label :payment_method_bank, Order.payment_methods_i18n[:bank] %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-3">
+      <strong>お届け先</strong>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-5">
+      <%= f.radio_button :address %>
+      <%= f.label :address, "ご自身の住所" %>
     </div>
   </div>
   <% end %>
