@@ -29,9 +29,57 @@
   </div>
   <div class="row">
     <div class="col-5">
-      <%= f.radio_button :address %>
-      <%= f.label :address, "ご自身の住所" %>
+      <%= f.radio_button :address, 0 %>
+      <%= f.label :address, "ご自身の住所" %><br>
+
+
+
+      <p>
+      〒<%= current_customer.postal_code %> <%= current_customer.address %><br>
+      <%= current_customer.last_name %> <%= current_customer.first_name %>
+      </p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-5">
+      <%= f.radio_button :address, 1 %>
+      <%= f.label :address, "新しいお届け先" %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-3">
+      <p>郵便番号(ハイフンなし)</p>
+    </div>
+    <div class="col-3">
+      <%= f.text_field :delivery_postal_code %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-3">
+      <p>住所</p>
+    </div>
+    <div class="col-3">
+      <%= f.text_field :delivery_address %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-3">
+      <p>名前</p>
+    </div>
+    <div class="col-3">
+      <p>(姓) <%= f.text_field :last_name %></p>
+    </div>
+    <div class="col-3">
+      <p>(名) <%= f.text_field :first_name %></p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-3"></div>
+    <div class="col-3">
+      <%= f.submit "確認画面へ進む", class:"btn btn-primary" %>
     </div>
   </div>
   <% end %>
 </div>
+
+#<Order id: nil, customer_id: nil, delivery_address: nil, delivery_name: nil, delivery_postal_code: nil, billing_amount: nil, postage: nil, created_at: nil, updated_at: nil, payment_method: nil>
