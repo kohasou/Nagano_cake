@@ -7,7 +7,6 @@ class Public::OrdersController < ApplicationController
   def confirmation
     @order = current_customer.orders.build(order_params)
     if params.dig(:order, :address) == "0"
-     
       @order.delivery_postal_code = current_customer.postal_code
       @order.delivery_address = current_customer.address
       @order.delivery_name = "#{current_customer.last_name} #{current_customer.first_name}"

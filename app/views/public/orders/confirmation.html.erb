@@ -1,0 +1,48 @@
+<div class="container">
+  <div class="row">
+    <div class="col-3">
+      <h4>
+        <strong>注文情報確認</strong>
+      </h4>
+    </div>
+  </div>
+  <table class="table table-bordered border-dark">
+    <thead>
+      <tr>
+        <th class="col-1">商品名</th>
+        <th class="col-1">単価(税込)</th>
+        <th class="col-1">数量</th>
+        <th class="col-1">小計</th>
+      </tr>
+    </thead>
+    <% current_customer.cart_items.each do |cart_item| %>
+    <tbody>
+      <tr>
+        <td class="col-2"><%= image_tag cart_item.item.get_image(50, 50) %> <%= cart_item.item.item_name %></td>
+        <td><%= cart_item.item.with_tax_price%></td>
+        <td><%= cart_item.quantity%></td>
+        <td><%= cart_item.subtotal%></td>
+      </tr>
+    </tbody>
+    <% end %>
+  </table>
+  <div class="row">
+    <div class="col-3">
+      <strong>支払い方法</strong>
+    </div>
+    <div class="col-3">
+      <%= @order.payment_method %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-3">
+      <strong>お届け先</strong>
+    </div>
+    <div class="col-7">
+      <p>
+      〒<%= @order.delivery_postal_code %> <%= @order.delivery_address %><br>
+      <%= @order.delivery_name %>
+      </p>
+    </div>
+  </div>
+</div>

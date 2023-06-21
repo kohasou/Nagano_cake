@@ -6,7 +6,7 @@
       </h4>
     </div>
   </div>
-  <%= form_with model: @order, url: confirmation_path do |f| %>
+  <%= form_with model: @order, url: confirmation_path, method: :post do |f| %>
   <div class="row">
     <div class="col-3">
       <strong>支払い方法</strong>
@@ -31,9 +31,6 @@
     <div class="col-5">
       <%= f.radio_button :address, 0 %>
       <%= f.label :address, "ご自身の住所" %><br>
-
-
-
       <p>
       〒<%= current_customer.postal_code %> <%= current_customer.address %><br>
       <%= current_customer.last_name %> <%= current_customer.first_name %>
@@ -81,5 +78,3 @@
   </div>
   <% end %>
 </div>
-
-#<Order id: nil, customer_id: nil, delivery_address: nil, delivery_name: nil, delivery_postal_code: nil, billing_amount: nil, postage: nil, created_at: nil, updated_at: nil, payment_method: nil>
