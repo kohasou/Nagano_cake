@@ -6,6 +6,7 @@ class Public::OrdersController < ApplicationController
 
   def confirmation
     @order = current_customer.orders.build(order_params)
+    @total = current_customer.cart_items.inject(0) { |sum, item| sum + item.sum_of_price }
     if params.dig(:order, :address) == "0"
       @order.delivery_postal_code = current_customer.postal_code
       @order.delivery_address = current_customer.address
@@ -13,6 +14,12 @@ class Public::OrdersController < ApplicationController
     else
       @order.delivery_name = "#{params.dig(:order, :last_name)} #{params.dig(:order, :first_name)}"
     end
+  end
+
+  def create
+    @order = Order.new(order_params)
+    @order.save
+    redirect_to completion_path
   end
 
   private
