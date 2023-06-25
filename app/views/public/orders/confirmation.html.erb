@@ -24,8 +24,8 @@
         <td><%= cart_item.subtotal%></td>
       </tr>
     </tbody>
-  </table>
   <% end %>
+  </table>
   <table class="table table-bordered col-4">
     <tbody>
       <tr>
@@ -61,7 +61,7 @@
       </p>
     </div>
   </div>
-  <% form_with model: @order, url: orders_path, method: :post do |f| %>
+  <%= form_with model: @order, url: orders_path, method: :post do |f| %>
   <div class="row">
     <div class="col-3">
       <%= f.hidden_field :payment_method %>
@@ -69,9 +69,8 @@
       <%= f.hidden_field :delivery_address %>
       <%= f.hidden_field :delivery_name %>
       <%= f.hidden_field :customer_id %>
-      <%= f.hidden_field :billing_amount %>
-      <%= f.hidden_field :postage %>
-      <%= f.hidden_field :created_at %>
+      <%= f.hidden_field :billing_amount, :value => @total + 800 %>
+      <%= f.hidden_field :postage, :value => 800 %>
       <%= f.submit "注文を確定する", class:"btn btn-primary" %>
     </div>
   </div>

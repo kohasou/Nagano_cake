@@ -1,1 +1,27 @@
-<h1>管理者</h1>
+<div class="container">
+  <div class="row">
+    <div class="col-5">
+      <h4>
+        <strong>注文履歴一覧</strong>
+      </h4>
+    </div>
+  </div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th class="col-2">購入日時</th>
+        <th class="col-2">購入者</th>
+        <th class="col-2">注文個数</th>
+      </tr>
+    </thead>
+    <% @orders.each do |order| %>
+    <tbody>
+      <tr>
+        <th class="row"><%= order.created_at %></th>
+        <td><%= order.delivery_name %></td>
+        <td><%= order.quantity %></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>
