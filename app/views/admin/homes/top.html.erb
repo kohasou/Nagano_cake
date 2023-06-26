@@ -15,11 +15,15 @@
       </tr>
     </thead>
     <% @orders.each do |order| %>
+    <% @total_quantity = 0 %>
     <tbody>
       <tr>
         <th class="row"><%= order.created_at %></th>
         <td><%= order.delivery_name %></td>
-        <td><%= order.quantity %></td>
+        <% order.order_details.each do |order_detail| %>
+          <% @total_quantity = @total_quantity + order_detail.item_quantity %>
+        <% end %>
+        <td><%= @total_quantity %></td>
       </tr>
     <% end %>
     </tbody>
