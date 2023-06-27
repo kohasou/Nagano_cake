@@ -18,7 +18,7 @@
     <% @total_quantity = 0 %>
     <tbody>
       <tr>
-        <th class="row"><%= order.created_at %></th>
+        <th class="row"><%= link_to order.created_at, admin_order_detail_path(order) %></th>
         <td><%= order.delivery_name %></td>
         <% order.order_details.each do |order_detail| %>
           <% @total_quantity = @total_quantity + order_detail.item_quantity %>
