@@ -7,13 +7,64 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-3">
+    <div class="col-2">
       <p>
         <strong>購入者</strong>
       </p>
     </div>
-    <div class="col-5">
-      <%= @order_detail.customer.last_name %>
+    <div class="col-7">
+      <%= link_to @order.customer.last_name + @order.customer.first_name, admin_customers_show_path %>
     </div>
   </div>
+  <div class="row">
+    <div class="col-2">
+      <p>
+        <strong>注文日</strong>
+      </p>
+    </div>
+    <div class="col-7">
+      <%= @order.created_at %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-2">
+      <p>
+        <strong>配送先</strong>
+      </p>
+    </div>
+    <div class="col-7">
+      〒<%= @order.delivery_postal_code %> <%= @order.delivery_address %><br>
+      <%= @order.delivery_name %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-2">
+      <p>
+        <strong>支払い方法</strong>
+      </p>
+    </div>
+    <div class="col-7">
+      <%= @order.payment_method %>
+    </div>
+  </div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th class="col-1">商品名</th>
+        <th class="col-2">単価(税込)</th>
+        <th class="col-2">数量</th>
+        <th class="col-2">小計</th>
+      </tr>
+    </thead>
+  <% @order.order_details.each do |order_detail| %>
+    <tbody>
+      <tr>
+        <td class="col-2"><%= order_detail.item.item_name %></td>
+        <td><%= order_detail.item.with_tax_price%></td>
+        <td><%= order_detail.item.quantity%></td>
+        <td><%= order_detail.subtotal%></td>
+      </tr>
+    </tbody>
+  <% end %>
+  </table>
 </div>
