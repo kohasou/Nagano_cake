@@ -56,15 +56,31 @@
         <th class="col-2">小計</th>
       </tr>
     </thead>
-  <% @order.order_details.each do |order_detail| %>
     <tbody>
+    <% @order.order_details.each do |order_detail| %>
       <tr>
         <td class="col-2"><%= order_detail.item.item_name %></td>
-        <td><%= order_detail.item.with_tax_price%></td>
-        <td><%= order_detail.item.quantity%></td>
-        <td><%= order_detail.subtotal%></td>
+        <td><%= order_detail.item.with_tax_price %></td>
+        <td><%= order_detail.item_quantity %></td>
+        <td><%= order_detail.ordering_price %></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+  <table class="table table-bordered col-4">
+    <tbody>
+      <tr>
+        <td class="col-2">送料</td>
+        <td class="col-5">800</td>
+      </tr>
+      <tr>
+        <td class="col-2">商品合計</td>
+        <td class="col-5"><%= @total %></td>
+      </tr>
+      <tr>
+        <td class="col-2">請求金額</td>
+        <td class="col-1"><%= @total + 800 %></td>
       </tr>
     </tbody>
-  <% end %>
   </table>
 </div>

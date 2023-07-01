@@ -25,7 +25,7 @@ class Public::OrdersController < ApplicationController
         order_detail.item_id = cart.item_id
         order_detail.order_id = @order.id
         order_detail.item_quantity = cart.quantity
-        order_detail.ordering_price = cart.item.with_tax_price
+        order_detail.ordering_price = cart.item.with_tax_price * order_detail.item_quantity
         order_detail.save
        end
       redirect_to  completion_path
