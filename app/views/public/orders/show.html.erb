@@ -1,0 +1,86 @@
+<div class="container">
+  <div class="row">
+    <div class="col-5">
+      <h4>
+        <strong>注文履歴詳細</strong>
+      </h4>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-3">
+      <p>
+        <strong>注文情報</strong>
+      </p>
+    </div>
+  </div>
+  <table class="table table-bordered">
+    <tbody>
+      <tr>
+        <td class="table-secondary col-1">注文日</td>
+        <td class="col-6"><%= @order.created_at %></td>
+      </tr>
+      <tr>
+        <td class="table-secondary col-1">配送先</td>
+        <td class="col-6">
+          〒<%= @order.delivery_postal_code %> <%= @order.delivery_address %><br>
+          <%= @order.delivery_name %>
+        </td>
+      </tr>
+      <tr>
+        <td class="table-secondary col-1">支払い方法</td>
+        <td class="col-6"><%= @order.payment_method %></td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="row">
+    <div class="col-3">
+      <p>
+        <strong>注文内容</strong>
+      </p>
+    </div>
+  </div>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th class="table-secondary col-1">商品名</th>
+        <th class="table-secondary col-2">単価(税込)</th>
+        <th class="table-secondary col-2">数量</th>
+        <th class="table-secondary col-2">小計</th>
+      </tr>
+    </thead>
+    <tbody>
+    <% @order.order_details.each do |order_detail| %>
+      <% @total_price= @total_price + order_detail.ordering_price %>
+      <tr>
+        <td class="col-2"><%= order_detail.item.item_name %></td>
+        <td><%= order_detail.item.with_tax_price %></td>
+        <td><%= order_detail.item_quantity %></td>
+        <td><%= order_detail.ordering_price %></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+  <div class="row">
+    <div class="col-3">
+      <p>
+        <strong>請求情報</strong>
+      </p>
+    </div>
+  </div>
+  <table class="table table-bordered col-4">
+    <tbody>
+      <tr>
+        <td class="table-secondary col-2">送料</td>
+        <td class="col-5">800</td>
+      </tr>
+      <tr>
+        <td class="table-secondary col-2">商品合計</td>
+        <td class="col-5"><%= @total_price %></td>
+      </tr>
+      <tr>
+        <td class="table-secondary col-2">請求金額</td>
+        <td class="col-1"><%= @total_price + 800 %></td>
+      </tr>
+    </tbody>
+  </table>
+</div>

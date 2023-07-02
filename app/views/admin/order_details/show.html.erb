@@ -58,6 +58,7 @@
     </thead>
     <tbody>
     <% @order.order_details.each do |order_detail| %>
+      <% @total_price= @total_price + order_detail.ordering_price %>
       <tr>
         <td class="col-2"><%= order_detail.item.item_name %></td>
         <td><%= order_detail.item.with_tax_price %></td>
@@ -75,11 +76,11 @@
       </tr>
       <tr>
         <td class="col-2">商品合計</td>
-        <td class="col-5"><%= @total %></td>
+        <td class="col-5"><%= @total_price %></td>
       </tr>
       <tr>
         <td class="col-2">請求金額</td>
-        <td class="col-1"><%= @total + 800 %></td>
+        <td class="col-1"><%= @total_price + 800 %></td>
       </tr>
     </tbody>
   </table>

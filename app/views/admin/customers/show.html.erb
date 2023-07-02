@@ -6,39 +6,39 @@
       </h4>
     </div>
   </div>
-  <table class="table table-bordered col-5">
+  <table class="table table-bordered">
     <tbody>
       <tr>
-        <td class="table-secondary col-3">会員ID</td>
-        <td class="col-5"><%= @customer.id %></td>
+        <td class="table-secondary col-1">会員ID</td>
+        <td class="col-4"><%= @customer.id %></td>
       </tr>
       <tr>
-        <td class="table-secondary col-3">氏名</td>
-        <td class="col-5"><%= @customer.last_name %> <%= @customer.first_name %></td>
+        <td class="table-secondary col-1">氏名</td>
+        <td class="col-4"><%= @customer.last_name %> <%= @customer.first_name %></td>
       </tr>
       <tr>
-        <td class="table-secondary col-3">フリガナ</td>
-        <td class="col-5"><%= @customer.last_name_kana %> <%= @customer.first_name_kana %></td>
+        <td class="table-secondary col-1">フリガナ</td>
+        <td class="col-4"><%= @customer.last_name_kana %> <%= @customer.first_name_kana %></td>
       </tr>
       <tr>
-        <td class="table-secondary col-3">郵便番号</td>
-        <td class="col-5"><%= @customer.postal_code %></td>
+        <td class="table-secondary col-1">郵便番号</td>
+        <td class="col-4"><%= @customer.postal_code %></td>
       </tr>
       <tr>
-        <td class="table-secondary col-3">住所</td>
-        <td class="col-5"><%= @customer.address %></td>
+        <td class="table-secondary col-1">住所</td>
+        <td class="col-4"><%= @customer.address %></td>
       </tr>
       <tr>
-        <td class="table-secondary col-3">電話番号</td>
-        <td class="col-5"><%= @customer.telephone_number %></td>
+        <td class="table-secondary col-1">電話番号</td>
+        <td class="col-4"><%= @customer.telephone_number %></td>
       </tr>
       <tr>
-        <td class="table-secondary col-3">メールアドレス</td>
-        <td class="col-5"><%= @customer.email %></td>
+        <td class="table-secondary col-1">メールアドレス</td>
+        <td class="col-4"><%= @customer.email %></td>
       </tr>
       <tr>
-        <td class="table-secondary col-3">会員ステータス</td>
-        <td class="col-5">
+        <td class="table-secondary col-1">会員ステータス</td>
+        <td class="col-4">
           <% if @customer.is_active == true %>
             <p class="text-success">有効</p>
           <% else %>

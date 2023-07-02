@@ -4,6 +4,16 @@ class Public::OrdersController < ApplicationController
     @customer = current_customer
   end
 
+  def index
+    @total_price = 0
+    @orders = Order.all
+  end
+
+  def show
+    @order = Order.find(params[:id])
+    @total_price = 0
+  end
+
   def confirmation
     @order = current_customer.orders.build(order_params)
     @total = current_customer.cart_items.inject(0) { |sum, item| sum + item.sum_of_price }

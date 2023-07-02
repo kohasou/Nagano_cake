@@ -1,1 +1,33 @@
-<h1>顧客</h1>
+<div class="container">
+  <div class="text-center">
+    <h4>
+      ようこそ、ながのCAKEへ！<br>
+      このサイトは、ケーキ販売のECサイトになります。<br>
+      会員でない方も商品の閲覧はできますが、<br>
+      購入には会員登録が必要になります。
+    </h4>
+  </div>
+  <div class="row">
+    <div class="col-3">
+      <h3>
+        <strong>新着商品</strong>
+      </h3>
+    </div>
+  </div>
+  <div class="row">
+  <% @items.each do |item| %>
+    <div class="row">
+      <div class="col-5">
+        <%= image_tag item.get_image(150, 150) %>
+        <%= link_to item.item_name, item_path(item.id) %>
+        <%= item.with_tax_price%>
+      </div>
+    </div>
+  <% end %>
+    <div class="row">
+      <div class="text-light">
+        <%= link_to "全ての商品を見る＞", items_path %>
+      </div>
+    </div>
+  </div>
+</div>
