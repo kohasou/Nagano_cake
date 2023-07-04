@@ -2,6 +2,11 @@ class Public::OrdersController < ApplicationController
   def new
     @order = Order.new
     @customer = current_customer
+    if @cart_item.nil?
+      redirect_to items_path
+    else
+
+    end
   end
 
   def index
