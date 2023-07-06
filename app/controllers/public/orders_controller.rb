@@ -12,7 +12,7 @@ class Public::OrdersController < ApplicationController
 
   def index
     @total_price = 0
-    @orders = Order.all
+    @orders = current_customer.orders
   end
 
   def show
