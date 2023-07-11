@@ -2,16 +2,17 @@ class Public::OrdersController < ApplicationController
   def new
     @order = Order.new
     @customer = current_customer
-    if @cart_item.nil?
-      redirect_to items_path
-    else
+    @cart_item = current_customer.cart_items.all
+    if @cart_item.present?
 
+    else
+      redirect_to items_path
     end
   end
 
   def index
     @total_price = 0
-    @orders = Order.all
+    @orders = current_customer.orders
   end
 
   def show
